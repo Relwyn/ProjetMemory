@@ -21,30 +21,45 @@ Array.prototype.shuffle = function (n) {
 
 
 
+
 function Board() {
     'use strict';
     var tab = document.getElementById('grille');
     var i, j;
-    var grille = [];
+    this.grille = [];
     for (i = 0; i < 9; i++) {
-        grille[i] = [];
+        this.grille[i] = [];
     }
     this.cartes = ["1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "joker"];
     this.cartes.shuffle();
-    alert(this.cartes);
     for (i = 0; i < 5; i += 1) {
         var tr = document.createElement('tr');
 
         for (j = 0; j < 5; j += 1) {
             var td = document.createElement('td');
-            grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1]);
-            grille[i][j].setCoord(i,j);
-            grille[i][j].img.addEventListener("click",function(i,j){  grille[i][j].flipTile(); } );
-            td.appendChild(grille[i][j].img);
+            var x = i;
+            var y = j;
+            this.grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1],((i + 1) * (j + 1))-1);
+            this.grille[i][j].setCoord(i,j);
+            this.grille[i][j].img.addEventListener("click",function(evt){update(evt.target.id)});
+            td.appendChild(this.grille[i][j].img);
             tr.appendChild(td);
         }
         tab.appendChild(tr);
     }
 
 }
+
+
+Board.prototype.update = function (id) {
+    var i,j;
+    for(i = 0;i < 5;i++){
+        for (j = 0; j < 5; j += 1){
+            if (this.grille[i][j].id == id){
+                alert(i+' '+j+'  '+id);
+                this.grille[i][j].flipTile()
+            }
+        }
+    }
+};
 

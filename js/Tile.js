@@ -2,10 +2,11 @@
  * Created by Nico on 14/12/2017.
  */
 
-function Tile(x,y,src) {
+function Tile(x,y,src,id) {
     'use strict';
     this.x = x;
     this.y = y;
+    this.id = id;
     this.retourne = false;
     this.src = src;
     this.img = document.createElement("img");
