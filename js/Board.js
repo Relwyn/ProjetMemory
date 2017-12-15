@@ -20,6 +20,7 @@ Array.prototype.shuffle = function (n) {
 };
 
 
+
 function Board() {
     'use strict';
     var tab = document.getElementById('grille');
@@ -37,6 +38,8 @@ function Board() {
         for (j = 0; j < 5; j += 1) {
             var td = document.createElement('td');
             grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1]);
+            grille[i][j].setCoord(i,j);
+            grille[i][j].img.addEventListener("click",function(i,j){  grille[i][j].flipTile(); } );
             td.appendChild(grille[i][j].img);
             tr.appendChild(td);
         }

@@ -12,7 +12,7 @@ function Tile(x,y,src) {
     this.img.src = './img/dos.png';
     this.img.with = 110;
     this.img.height = 160;
-    this.img.addEventListener("click", this.flipTile())
+
 }
 
 Tile.prototype.setCoord = function (x, y) {
@@ -24,7 +24,7 @@ Tile.prototype.setCoord = function (x, y) {
 Tile.prototype.display = function () {
     'use strict';
     if (this.retourne){
-        this.img.src = './img/'+this.src
+        this.img.src = './img/'+this.src+'.png'
     }
     else{
         this.img.src = './img/dos.png'
@@ -35,4 +35,5 @@ Tile.prototype.display = function () {
 Tile.prototype.flipTile = function () {
     'use strict';
     this.retourne = !this.retourne;
+    this.display();
 };
