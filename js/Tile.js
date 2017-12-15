@@ -24,7 +24,7 @@ Tile.prototype.setCoord = function (x, y) {
 Tile.prototype.display = function () {
     'use strict';
     if (this.retourne){
-        this.img.src = this.src
+        this.img.src = './img/'+this.src
     }
     else{
         this.img.src = './img/dos.png'
