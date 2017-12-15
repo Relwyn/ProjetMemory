@@ -24,20 +24,21 @@ function Board() {
     'use strict';
     var tab = document.getElementById('grille');
     var i, j;
-    var grille = new Array();
+    var grille = [];
     for (i = 0; i < 9; i++) {
-        grille[i] = new Array();
+        grille[i] = [];
     }
     this.cartes = ["1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "joker"];
     this.cartes.shuffle();
+    alert(this.cartes);
     for (i = 0; i < 5; i += 1) {
         var tr = document.createElement('tr');
 
         for (j = 0; j < 5; j += 1) {
             var td = document.createElement('td');
-            grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))]);
+            grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1]);
             td.appendChild(grille[i][j].img);
-            tr.appendChild(td)
+            tr.appendChild(td);
         }
         tab.appendChild(tr);
     }

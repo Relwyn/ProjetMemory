@@ -12,6 +12,7 @@ function Tile(x,y,src) {
     this.img.src = './img/dos.png';
     this.img.with = 110;
     this.img.height = 160;
+    this.img.addEventListener("click", this.flipTile())
 }
 
 Tile.prototype.setCoord = function (x, y) {
