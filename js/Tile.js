@@ -6,11 +6,12 @@ function Tile(x,y,src,id) {
     'use strict';
     this.x = x;
     this.y = y;
-    this.id = id;
+    this.valide = false;
     this.retourne = false;
     this.src = src;
     this.img = document.createElement("img");
     this.img.src = './img/dos.png';
+    this.img.id = id;
     this.img.with = 110;
     this.img.height = 160;
 

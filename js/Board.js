@@ -21,7 +21,6 @@ Array.prototype.shuffle = function (n) {
 
 
 
-
 function Board() {
     'use strict';
     var tab = document.getElementById('grille');
@@ -39,7 +38,7 @@ function Board() {
             var td = document.createElement('td');
             var x = i;
             var y = j;
-            this.grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1],i+j*10);
+            this.grille[i][j] = new Tile(i, j, this.cartes[((i + 5 * j))],i+j*10);
             this.grille[i][j].setCoord(i,j);
             this.grille[i][j].img.addEventListener("click",function(evt){update(evt.target.id)});
             td.appendChild(this.grille[i][j].img);
@@ -51,15 +50,16 @@ function Board() {
 }
 
 
-Board.prototype.update = function (id) {
+Board.prototype.update = function (id,nbclic) {
+
     var i,j;
-    console.log(this.grille);
     for(i = 0;i < 5;i++){
         for (j = 0; j < 5; j += 1){
-            if (this.grille[i][j].id == id){
-                alert(id+i);
+
+            if (this.grille[i][j].img.id == id && this.grille[i][j].valide == false){
                 this.grille[i][j].flipTile()
             }
+
         }
     }
 };
