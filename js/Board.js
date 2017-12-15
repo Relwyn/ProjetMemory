@@ -27,7 +27,7 @@ function Board() {
     var tab = document.getElementById('grille');
     var i, j;
     this.grille = [];
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < 5; i++) {
         this.grille[i] = [];
     }
     this.cartes = ["1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "1CA", "1CO", "1P", "1T", "2CA", "2CO", "2P", "2T", "3CA", "3CO", "3P", "3T", "joker"];
@@ -39,7 +39,7 @@ function Board() {
             var td = document.createElement('td');
             var x = i;
             var y = j;
-            this.grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1],((i + 1) * (j + 1))-1);
+            this.grille[i][j] = new Tile(i, j, this.cartes[((i + 1) * (j + 1))-1],i+j*10);
             this.grille[i][j].setCoord(i,j);
             this.grille[i][j].img.addEventListener("click",function(evt){update(evt.target.id)});
             td.appendChild(this.grille[i][j].img);
@@ -53,10 +53,11 @@ function Board() {
 
 Board.prototype.update = function (id) {
     var i,j;
+    console.log(this.grille);
     for(i = 0;i < 5;i++){
         for (j = 0; j < 5; j += 1){
             if (this.grille[i][j].id == id){
-                alert(i+' '+j+'  '+id);
+                alert(id+i);
                 this.grille[i][j].flipTile()
             }
         }
