@@ -6,17 +6,18 @@ var nbclic = 0;
 var id1,id2;
 function update(id) {
     if (nbclic == 0){
+
         id1 = id;
-        B.update(id,nbclic);
-        nbclic +=1;
+        nbclic = B.update(id);
+
     }
     if (nbclic == 1 && id1!=id ){
         id2 = id;
-        B.update(id,nbclic);
+        B.update(id);
         nbclic +=1;
     }
     if (nbclic == 2 && id1!=id && id2!=id){
-        B.verif(id1,id2);
+        B.search(id1,id2);
 
         nbclic = 0;
     }

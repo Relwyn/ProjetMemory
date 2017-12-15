@@ -50,17 +50,43 @@ function Board() {
 }
 
 
-Board.prototype.update = function (id,nbclic) {
+Board.prototype.update = function (id) {
 
     var i,j;
     for(i = 0;i < 5;i++){
         for (j = 0; j < 5; j += 1){
 
             if (this.grille[i][j].img.id == id && this.grille[i][j].valide == false){
-                this.grille[i][j].flipTile()
-            }
+                this.grille[i][j].flipTile();
 
+                return 1;
+            }
+            return 0;
         }
     }
 };
 
+Board.prototype.search = function (id1,id2) {
+
+    var i,j;
+    for(i = 0;i < 5;i++){
+        for (j = 0; j < 5; j += 1){
+        var t1,t2;
+            if (this.grille[i][j].img.id == id1){
+                id1 = this.grille[i][j]
+            }
+            if (this.grille[i][j].img.id == id2){
+                id2 = this.grille[i][j]
+            }
+
+        }
+        if(id1.src == id2.src){
+            id1.valide = true;
+            id2.valide = true;
+        }
+        else{
+            this.update(id1);
+            this.update(id2);
+        }
+    }
+};
